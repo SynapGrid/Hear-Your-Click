@@ -1,6 +1,6 @@
 model:
   base_learning_rate: 1.0e-4
-  target: diff_foley_inference.diff_foley.models.diffusion.ddpm.LatentDiffusion
+  target: hyc_inference.hyc.models.diffusion.ddpm.LatentDiffusion
   params:
     linear_start: 0.00085
     linear_end: 0.0120
@@ -19,7 +19,7 @@ model:
 
 
     unet_config:
-      target: diff_foley_inference.diff_foley.modules.diffusionmodules.openai_unetmodel.UNetModel
+      target: hyc_inference.hyc.modules.diffusionmodules.openai_unetmodel.UNetModel
       params:
         image_size: 32 # unused
         in_channels: 4
@@ -36,7 +36,7 @@ model:
         legacy: False
 
     first_stage_config:
-      target: diff_foley_inference.diff_foley.models.autoencoder.AutoencoderKL
+      target: hyc_inference.hyc.models.autoencoder.AutoencoderKL
       params:
         embed_dim: 4
         monitor: val/rec_loss
@@ -60,7 +60,7 @@ model:
 
     
     cond_stage_config:
-      target: diff_foley_inference.diff_foley.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed
+      target: hyc_inference.hyc.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed
       params:
         origin_dim: 512
         embed_dim: 768
