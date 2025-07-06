@@ -48,8 +48,8 @@ einops
 hf_xet
 opencv-python-headless
 ffmpeg
-pydantic==2.10.6 # 和机器版本对上
-pydantic_core==2.27.2 # 和机器版本对上
+# pydantic==2.10.6 # 和机器版本对上
+# pydantic_core==2.27.2 # 和机器版本对上
 gradio==3.50.2 # 一定要这个
 # llvmlite==0.39.0
 numba

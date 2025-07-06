@@ -64,7 +64,7 @@ einops-exts==0.0.4
 executing==1.2.0
 fastjsonschema==2.17.1
 filelock==3.8.2
-flash-attn==1.0.5
+# flash-attn==1.0.5
 Flask==2.2.5
 fsspec==2022.11.0
 ftfy==6.1.1
@@ -86,7 +86,7 @@ jupyterlab-widgets==3.0.7
 kornia==0.6.7
 librosa==0.8.0
 lightning-utilities==0.6.0.post0
-llvmlite==0.36.0
+# llvmlite==0.36.0
 lmdb==1.4.1
 lxml==4.9.2
 markdown-it-py==2.1.0
