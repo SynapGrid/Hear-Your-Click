@@ -1,3 +1,3 @@
 # Hear Your Click
 
-We present Hear-Your-Click, an interactive framework enabling targeted object audio generation via clicks, addressing V2A limitations with OCAV, MVE, data augmentations, and AVC score for precise audio-visual alignment.
+We present Hear-Your-Click, an interactive framework enabling targeted object audio generation via clicks.
