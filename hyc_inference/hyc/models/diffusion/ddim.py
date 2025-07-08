@@ -7,7 +7,7 @@ from functools import partial
 
 import torch.nn.functional as F
 
-from diff_foley_inference.diff_foley.modules.diffusionmodules.util import make_ddim_sampling_parameters, make_ddim_timesteps, noise_like, \
+from hyc_inference.hyc.modules.diffusionmodules.util import make_ddim_sampling_parameters, make_ddim_timesteps, noise_like, \
     extract_into_tensor
 
 

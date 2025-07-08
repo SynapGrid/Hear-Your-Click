@@ -21,17 +21,17 @@ try:
 except:
     from pytorch_lightning.utilities import rank_zero_only
 
-from diff_foley_inference.diff_foley.util import log_txt_as_img, exists, default, ismap, isimage, mean_flat, count_params, instantiate_from_config
-from diff_foley_inference.diff_foley.modules.ema import LitEma
-from diff_foley_inference.diff_foley.models.distribution import normal_kl, DiagonalGaussianDistribution
-from diff_foley_inference.diff_foley.models.autoencoder import AutoencoderKL
-from diff_foley_inference.diff_foley.modules.diffusionmodules.util import make_beta_schedule, extract_into_tensor, noise_like
-from diff_foley_inference.diff_foley.models.diffusion.ddim import DDIMSampler
+from hyc_inference.hyc.util import log_txt_as_img, exists, default, ismap, isimage, mean_flat, count_params, instantiate_from_config
+from hyc_inference.hyc.modules.ema import LitEma
+from hyc_inference.hyc.models.distribution import normal_kl, DiagonalGaussianDistribution
+from hyc_inference.hyc.models.autoencoder import AutoencoderKL
+from hyc_inference.hyc.modules.diffusionmodules.util import make_beta_schedule, extract_into_tensor, noise_like
+from hyc_inference.hyc.models.diffusion.ddim import DDIMSampler
 
 
 # Add Other Sampler:
-from diff_foley_inference.diff_foley.models.diffusion.plms import PLMSSampler
-from diff_foley_inference.diff_foley.models.diffusion.dpm_solver import DPMSolverSampler
+from hyc_inference.hyc.models.diffusion.plms import PLMSSampler
+from hyc_inference.hyc.models.diffusion.dpm_solver import DPMSolverSampler
 
 
 __conditioning_keys__ = {'concat': 'c_concat',

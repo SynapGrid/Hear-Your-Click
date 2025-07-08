@@ -8,8 +8,8 @@ import torch.nn as nn
 import numpy as np
 from einops import rearrange
 
-from diff_foley_inference.diff_foley.util import instantiate_from_config
-from diff_foley_inference.diff_foley.modules.diffusionmodules.attention import LinearAttention
+from hyc_inference.hyc.util import instantiate_from_config
+from hyc_inference.hyc.modules.diffusionmodules.attention import LinearAttention
 
 
 class AbstractDistribution:

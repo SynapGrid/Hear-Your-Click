@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/2ca49ab5-80ca-42c4-b9a5-9dc7959ac358
 
 2. (Optional) Create a Conda environment:  
    ```bash  
-   conda env create -n hyc python=3.9
+   conda env create -n hyc python=3.9.11
    conda activate hyc
    ```
 
@@ -30,12 +30,14 @@ https://github.com/user-attachments/assets/2ca49ab5-80ca-42c4-b9a5-9dc7959ac358
 
 
 ## 🚀 **Model Checkpoints**  
-Download the model weights and place them in `./hyc_inference/inference/ckpt/`:  
+1. Download the model weights and place them in `./hyc_inference/inference/ckpt/`:  
 
-- [Model 1](https://drive.google.com/file/d/1QX24gEmN-cG03NlO0zT1geK1eUgOqDtk/view?usp=drive_link)  
-- [Model 2](https://drive.google.com/file/d/15tbqXR-99QNg-Il6wxPD66q4EM4UkVvJ/view?usp=drive_link)  
+- [epoch=000059.ckpt](https://drive.google.com/file/d/1QX24gEmN-cG03NlO0zT1geK1eUgOqDtk/view?usp=drive_link)  
+- [epoch_10.pt](https://drive.google.com/file/d/15tbqXR-99QNg-Il6wxPD66q4EM4UkVvJ/view?usp=drive_link)
+- [eval_classifier.ckpt](https://huggingface.co/SimianLuo/Diff-Foley/resolve/main/diff_foley_ckpt/eval_classifier.ckpt)
+- [double_guidance_classifier.ckpt](https://huggingface.co/SimianLuo/Diff-Foley/resolve/main/diff_foley_ckpt/double_guidance_classifier.ckpt)
 
-> 💡 Tips: use `gdown` to download Google Drive files:
+> 💡 Tips: you can use `gdown` and `wget` to download files. For example:
 > ```bash  
 > pip install gdown
 > 
@@ -50,6 +52,12 @@ Download the model weights and place them in `./hyc_inference/inference/ckpt/`:
 > wget https://huggingface.co/SimianLuo/Diff-Foley/resolve/main/diff_foley_ckpt/double_guidance_classifier.ckpt
 > ```  
 
+2. Download the models weights and place them in `./checkpoints`:
+
+- [clap_clip.pt](https://github.com/MCR-PEFT/C-MCR/blob/main/checkpoints/clap_clip.pt)
+- [laion_clap_fullset_fusion.pt](https://huggingface.co/lukewys/laion_clap/blob/main/630k-fusion-best.pt)
+- [clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32)
+
 
 
 ## 🧪 **Inference Command**  
@@ -58,32 +66,6 @@ Launch the inference demo:
 python app.py --device cuda:0,1 --sam_model_type vit_b
 ```
 
-
-## 📚 **Citations**  
-If you use this codebase or model checkpoints in your research, please cite our work:  
-
-**BibTeX**  
-```bibtex
-@article{hear_your_click_2025,
-  title = {Hear-Your-Click: Interactive Audio Generation via Object Clicks},
-  author = {Your Name and Collaborators},
-  journal = {arXiv preprint arXiv:xxxx.xxxxx},
-  year = {2025},
-  note = {Code available at \url{https://github.com/your-username/hear-your-click}}
-}
-```
-
-This project builds upon or references the following works. 
-
-```bibtex
-@article{hear_your_click_2025,
-  title = {Hear-Your-Click: Interactive Audio Generation via Object Clicks},
-  author = {Your Name and Collaborators},
-  journal = {arXiv preprint arXiv:xxxx.xxxxx},
-  year = {2025},
-  note = {Code available at \url{https://github.com/your-username/hear-your-click}}
-}
-```
 
 
 

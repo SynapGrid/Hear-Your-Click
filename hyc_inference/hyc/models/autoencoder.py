@@ -5,10 +5,10 @@ from contextlib import contextmanager
 
 # from taming.modules.vqvae.quantize import VectorQuantizer2 as VectorQuantizer
 
-from diff_foley_inference.diff_foley.modules.stage1_autoencoder.model import Encoder, Decoder
-from diff_foley_inference.diff_foley.modules.stage1_autoencoder.model import DiagonalGaussianDistribution
+from hyc_inference.hyc.modules.stage1_autoencoder.model import Encoder, Decoder
+from hyc_inference.hyc.modules.stage1_autoencoder.model import DiagonalGaussianDistribution
 
-from diff_foley_inference.diff_foley.util import instantiate_from_config
+from hyc_inference.hyc.util import instantiate_from_config
 
 
 class VQModel(pl.LightningModule):

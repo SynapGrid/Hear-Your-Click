@@ -12,7 +12,7 @@ import torch.nn.functional as F
 import sys
 
 
-from diff_foley_inference.diff_foley.modules.diffusionmodules.util import (
+from hyc_inference.hyc.modules.diffusionmodules.util import (
     checkpoint,
     conv_nd,
     linear,
@@ -21,7 +21,7 @@ from diff_foley_inference.diff_foley.modules.diffusionmodules.util import (
     normalization,
     timestep_embedding,
 )
-from diff_foley_inference.diff_foley.modules.diffusionmodules.attention_openai import SpatialTransformer
+from hyc_inference.hyc.modules.diffusionmodules.attention_openai import SpatialTransformer
 
 
 # dummy replace

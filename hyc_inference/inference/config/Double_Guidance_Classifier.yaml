@@ -1,6 +1,6 @@
 model:
   base_learning_rate: 5.0e-5
-  target: diff_foley_inference.diff_foley.modules.double_guidance.alignment_classifier.Alignment_Classifier_Double_Guidance
+  target: hyc_inference.hyc.modules.double_guidance.alignment_classifier.Alignment_Classifier_Double_Guidance
   params:
     linear_start: 0.00085
     linear_end: 0.0120
@@ -11,7 +11,7 @@ model:
 
 
     first_stage_config:
-      target: diff_foley_inference.diff_foley.models.autoencoder.AutoencoderKL
+      target: hyc_inference.hyc.models.autoencoder.AutoencoderKL
       params:
         embed_dim: 4
         monitor: val/rec_loss
@@ -34,7 +34,7 @@ model:
           target: torch.nn.Identity
 
     classifier_config:
-      target: diff_foley_inference.diff_foley.modules.double_guidance.alignment_backbone.Classifier_Backbone
+      target: hyc_inference.hyc.modules.double_guidance.alignment_backbone.Classifier_Backbone
       params:
         image_size: 32      # unused
         in_channels: 4
@@ -52,7 +52,7 @@ model:
 
 
     cond_stage_config:
-      target: diff_foley_inference.diff_foley.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed
+      target: hyc_inference.hyc.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed
       params:
         origin_dim: 512
         embed_dim: 512

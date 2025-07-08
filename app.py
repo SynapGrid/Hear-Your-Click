@@ -59,7 +59,7 @@ def download_checkpoint_from_google_drive(file_id, folder, filename):
 
     if not os.path.exists(filepath):
         print("Downloading checkpoints from Google Drive... tips: If you cannot see the progress bar, please try to download it manuall \
-              and put it in the checkpointes directory. E2FGVI-HQ-CVPR22.pth: https://github.com/MCG-NKU/E2FGVI(E2FGVI-HQ model)")
+              and put it in the checkpointes directory. E2FGVI-HQ-CVPR22.pth: https://drive.google.com/file/d/10wGdKSUOie0XmCr8SQ2A2FeDe-mfn5w3/view")
         url = f"https://drive.google.com/uc?id={file_id}"
         gdown.download(url, filepath, quiet=False)
         print("Downloaded successfully!")
@@ -313,10 +313,11 @@ def df_inference(video_path,video_output,extract_cavp,latent_diffusion_model,sav
             data = pickle.load(file)
             print(data[name].shape)
             np.save(os.path.join("./result/clip_cavp",name+'.npy'),np.asarray(data[name]))
+    print("clip_cavp finished.")
 
 
     # Extract Video CAVP Features & New Video Path:
-    cavp_feats, new_video_path = extract_cavp(video_path, start_second, truncate_second, tmp_path=tmp_path)
+    cavp_feats = extract_cavp(os.path.join('./result/video_fps4',os.path.basename(video_path)),video_path, start_second, truncate_second, tmp_path=tmp_path)
     print("cavp_feats",cavp_feats.shape)
     clip = np.load(os.path.join('./result/clip_cavp',os.path.basename(video_path)[:-4]+'.npy'),allow_pickle=True)
     print("clipfea:",clip.shape)
@@ -325,13 +326,13 @@ def df_inference(video_path,video_output,extract_cavp,latent_diffusion_model,sav
     cavp_feats = np.asarray(cavp_feats)
     print("cavp_clip_feats",cavp_feats.shape)
 
-    ################# Diff-foley Generation #################
+    ################# Generation #################
     # Whether use Double Guidance:
     use_double_guidance = True
 
     if use_double_guidance:
-        classifier_config_path = "./diff_foley_inference/inference/config/Double_Guidance_Classifier.yaml"
-        classifier_ckpt_path = "./diff_foley_inference/inference/diff_foley_ckpt/double_guidance_classifier.ckpt"
+        classifier_config_path = "./hyc_inference/inference/config/Double_Guidance_Classifier.yaml"
+        classifier_ckpt_path = "./hyc_inference/inference/ckpt/double_guidance_classifier.ckpt"
         classifier_config = OmegaConf.load(classifier_config_path)
         classifier = load_model_from_config(classifier_config, classifier_ckpt_path)
 
@@ -671,6 +672,7 @@ def generate_video_from_frames(frames, output_path, fps=30):
     #     video.write(frame)
     
     # video.release()
+    fps = int(fps)
     frames = torch.from_numpy(np.asarray(frames))
     if not os.path.exists(os.path.dirname(output_path)):
         os.makedirs(os.path.dirname(output_path))
@@ -714,19 +716,19 @@ model = TrackingAnything(SAM_checkpoint, xmem_checkpoint, e2fgvi_checkpoint,args
 
 title = """<p><h1 align="center">Hear Your Click</h1></p>
     """
-description = """ """
+description = """<p align="center">Upload your video and click on the frame to initiate object tracking and audio generation. You can click multiple times to refine the tracked area.</p>"""
 
 
-from diff_foley_inference.inference.demo_util import Extract_CAVP_Features,inverse_op
-from diff_foley_inference.diff_foley.util import instantiate_from_config
+from hyc_inference.inference.demo_util import Extract_CAVP_Features,inverse_op
+from hyc_inference.hyc.util import instantiate_from_config
 from omegaconf import OmegaConf
 from tqdm import tqdm
 import soundfile as sf
 
 fps = 4                                                     #  CAVP default FPS=4, Don't change it.
 batch_size = 40   # Don't change it.
-cavp_config_path = "./diff_foley_inference/inference/config/Stage1_CAVP.yaml"              #  CAVP Config # 最好cd进diff-foley根目录执行，或者写绝对路径，否则会报错
-cavp_ckpt_path = "./diff_foley_inference/inference/diff_foley_ckpt/epoch_10.pt"      #  CAVP Ckpt
+cavp_config_path = "./hyc_inference/inference/config/Stage1_CAVP.yaml"              #  CAVP Config # 最好cd进diff-foley根目录执行，或者写绝对路径，否则会报错
+cavp_ckpt_path = "./hyc_inference/inference/ckpt/epoch_10.pt"      #  CAVP Ckpt
 
 ################# Load models #################
 device = torch.device("cuda")
@@ -771,9 +773,8 @@ seed_everything(21) #21
 
 
 # LDM Config:
-ldm_config_path = "./diff_foley_inference/inference/config/Stage2_LDM.yaml"
-ldm_ckpt_path = "./diff_foley_inference/inference/diff_foley_ckpt/epoch=000059.ckpt"
-# "./inference/diff_foley_ckpt/ldm_epoch240.ckpt" 
+ldm_config_path = "./hyc_inference/inference/config/Stage2_LDM.yaml"
+ldm_ckpt_path = "./hyc_inference/inference/ckpt/epoch=000059.ckpt"
 config = OmegaConf.load(ldm_config_path)
 
 # Loading LDM:

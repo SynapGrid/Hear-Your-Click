@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch import nn, einsum
 from einops import rearrange, repeat
 
-from diff_foley_inference.diff_foley.modules.diffusionmodules.util import checkpoint
+from hyc_inference.hyc.modules.diffusionmodules.util import checkpoint
 
 
 def exists(val):
