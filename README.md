@@ -1,5 +1,5 @@
 # **Hear-Your-Click**  
-**Interactive audio generation via object clicks**  
+*arXiv: http://arxiv.org/abs/2507.04959*
 
 We present *Hear-Your-Click*, an interactive framework enabling targeted object audio generation via user clicks.
 
@@ -66,6 +66,62 @@ Launch the inference demo:
 python app.py --device cuda:0,1 --sam_model_type vit_b
 ```
 
+## 📚 **Citations**  
+If you find this work useful for your research or applications, please cite our work:
+
+**BibTeX**  
+```bibtex
+@misc{liang2025hearyourclickinteractivevideotoaudiogeneration,
+      title={Hear-Your-Click: Interactive Video-to-Audio Generation via Object-aware Contrastive Audio-Visual Fine-tuning}, 
+      author={Yingshan Liang and Keyu Fan and Zhicheng Du and Yiran Wang and Qingyang Shi and Xinyu Zhang and Jiasheng Lu and Peiwu Qin},
+      year={2025},
+      eprint={2507.04959},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.04959}, 
+}
+```
+
+This project builds upon or references the following works. 
+
+```bibtex
+@misc{luo2023difffoleysynchronizedvideotoaudiosynthesis,
+      title={Diff-Foley: Synchronized Video-to-Audio Synthesis with Latent Diffusion Models}, 
+      author={Simian Luo and Chuanhao Yan and Chenxu Hu and Hang Zhao},
+      year={2023},
+      eprint={2306.17203},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2306.17203}, 
+}
+
+@misc{yang2023track,
+      title={Track Anything: Segment Anything Meets Videos}, 
+      author={Jinyu Yang and Mingqi Gao and Zhe Li and Shang Gao and Fangjing Wang and Feng Zheng},
+      year={2023},
+      eprint={2304.11968},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@misc{wang2023connecting,
+      title={Connecting Multi-modal Contrastive Representations}, 
+      author={Zehan Wang and Yang Zhao and Xize Cheng and Haifeng Huang and Jiageng Liu and Li Tang and Linjun Li and Yongqi Wang and Aoxiong Yin and Ziang Zhang and Zhou Zhao},
+      year={2023},
+      eprint={2305.14381},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@misc{sheffer2022i,
+    title={I Hear Your True Colors: Image Guided Audio Generation},
+    author={Roy Sheffer and Yossi Adi},
+    year={2022},
+    eprint={2211.03089},
+    archivePrefix={arXiv},
+    primaryClass={cs.SD}
+}
+```
 
 
 
